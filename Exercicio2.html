@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Target Sistemas</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Teste Target Sistemas - Exercício 2</h1>
+        <p>2) Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor sempre será a soma dos 2 valores
+            anteriores (exemplo: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...), escreva um programa na linguagem que desejar onde, informado um número, ele calcule a sequência de Fibonacci e retorne uma mensagem avisando se o número
+            informado pertence ou não a sequência.
+            <br>
+            IMPORTANTE:<br>
+            Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente
+            definido no código;</p>
+
+        <span>Insira um número</span>
+        <input type="text" class="num" placeholder="número">
+        <button type="text" name="num" class="btn-num">
+            Inserir
+        </button>
+        <p class="result">O número informado pertence a sequência Fibonacci.</p>
+    </div>
+</body>
+
+<script>
+    const $numInput = document.querySelector('.num')
+    const $buttonNum = document.querySelector('.btn-num')
+    const $result = document.querySelector('.result')
+
+    const pertenceFibonacci = (n) => {
+        var fib = fibonacci(n);
+        if (fib.includes(n)) {
+            return `${n} pertence à sequência de Fibonacci.`;
+        } else {
+            return `${n} não pertence à sequência de Fibonacci.`;
+        }
+    }
+
+    const clearNumInput = () => {
+        $numInput.value = ''
+    }
+
+    const handleBtn = () => {
+        const num = parseInt($numInput.value);
+        if (!isNaN(num)) {
+            const mensagem = pertenceFibonacci(num);
+            $result.innerHTML = mensagem;
+        } else {
+            alert('Insira apenas números!')
+        }
+        clearNumInput()
+    }
+
+    const fibonacci = (n) => {
+        var fib = [0, 1];
+        while (fib[fib.length - 1] < n) {
+            fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
+        }
+        return fib;
+    }
+
+
+    $buttonNum.addEventListener('click', handleBtn)
+</script>
+
+</html>

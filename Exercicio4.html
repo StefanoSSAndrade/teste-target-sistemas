@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Target Sistemas</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Teste Target Sistemas - Exercício 4</h1>
+    <p>4) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:<br>
+
+        SP – R$67.836,43 <br>
+        RJ – R$36.678,66 <br>
+        MG – R$29.229,88<br>
+        ES – R$27.165,48<br>
+        Outros – R$19.849,53<br>
+
+        Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve
+        dentro do valor total mensal da distribuidora.</p>
+</body>
+
+<script>
+    const monthlySales = {
+        "SP": 67836.43,
+        "RJ": 36678.66,
+        "MG": 29229.88,
+        "ES": 27165.48,
+        "Outros": 19849.53
+    };
+
+    const totalSales = Object.values(monthlySales).reduce((total, sales) => total + sales);
+
+    const statePercentages = {};
+    for (const [state, sales] of Object.entries(monthlySales)) {
+        statePercentages[state] = (sales / totalSales) * 100;
+    }
+
+    for (const [state, percentage] of Object.entries(statePercentages)) {
+        console.log(`${state}: ${percentage.toFixed(2)}%`);
+    }
+</script>
+
+</html>
